@@ -1,0 +1,115 @@
+/* Estilo geral do corpo */
+/* Estilo do cabeçalho */
+header {
+    background-color: #FFFFFF; 
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+  }
+  
+  header img {
+    max-height: 100px; 
+  }
+    
+  header .header-content {
+    display: flex;
+    align-items: center;
+  }
+
+body {
+    background-color: #005BA6; /* Fundo da página */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilo da caixa centralizada */
+  .container-box {
+    background-color: #FFFFFF; 
+    width: 80%; 
+    margin: 5% auto; 
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 1); 
+    border-radius: 10px;
+  }
+  
+  
+  h2 {
+    color: #005BA6; 
+    text-align: center; 
+    margin-bottom: 30px;
+  }
+  
+  
+  .table {
+    width: 80%;
+    height: 80%;
+    margin: 0 auto; 
+    border-collapse: collapse;
+    background-color: #F5F5F5;
+  }
+  
+  .table th,
+  .table td {
+    padding: 10px;
+    text-align: left;
+    color: #6C6DCF;
+  }
+  
+  .table th {
+    background-color: #E0E0E0; 
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #F0F0F0; 
+  }
+  
+  /* Estilo dos botões */
+  button {
+    background-color: #00B5E5; 
+    color: #F5F5F5; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #008FB2; 
+  }
+  
+
+  .button-group {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  button + button {
+    margin-left: 10px; 
+  }
+
+  .novo {
+    background-color: #005BA6;
+    color: #F5F5F5; /* Cor da fonte branca */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    display: inline-block; /* Alinhar o botão à esquerda */
+    margin-top: 20px;
+  }
+  
+  /* Centralizar o contêiner do botão, mas alinhá-lo à esquerda */
+  .button-container {
+    display: flex;
+    justify-content: flex-start; /* Alinhar o botão à esquerda */
+    margin: 0 auto;
+    width: 80%; /* Largura igual à da tabela */
+  }
+  

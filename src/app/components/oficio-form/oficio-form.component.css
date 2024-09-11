@@ -1,0 +1,105 @@
+/* Estilo geral do corpo */
+body {
+    background-color: #005BA6; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilo da caixa centralizada */
+  .content-box {
+    background-color: #FFFFFF; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin: 60px auto 30px auto;
+
+}
+  
+  
+  /* Alinhamento geral do formulário */
+  form {
+    display: grid;
+    grid-template-columns: 150px 1fr; 
+    gap: 15px 20px; 
+    align-items: center; 
+    width: 100%;
+    padding: 0 10%;
+  }
+  
+  /* Estilo dos campos de formulário */
+  .form-group {
+    display: contents;
+  
+  }
+  
+  .form-label {
+    color: #6C6DCF; 
+    text-align: left;
+    padding-right: 10px; 
+    
+  }
+  
+  .form-control {
+    background-color: #F5F5F5;
+    border: 1px solid gray; 
+    color: gray; 
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%; 
+  }
+  
+  .form-control:focus {
+    border-color: #00B5E5; 
+    box-shadow: 0 0 5px rgba(0, 181, 229, 0.5);
+    outline: none; 
+  }
+  
+  /* Estilo para o campo de upload de arquivos */
+  input[type="file"] {
+    padding: 5px; 
+  }
+  
+  /* Estilo dos botões */
+  button {
+    background-color: #005BA6; 
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #004080; 
+  }
+  
+
+  .button-group {
+    grid-column: span 2; 
+    display: flex;
+    justify-content: flex-start; 
+    margin-top: 20px;
+  
+  }
+  
+  button + button {
+    margin-left: 10px; 
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.8rem; /* Adjust font size as needed */
+    margin-top: 5px; /* Add some space above the error message */
+   position:absolute;
+   top:10px;
+   
+  }
+
+  .toast-error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
