@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'dist/programa-oficios-frontend')));
 
 // Enviar todas as rotas para o arquivo 'index.html'
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/programa-oficios-frontend/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/programa-oficios-frontend/src/index.html'));
 });
 
 // Definir a porta para o Heroku
