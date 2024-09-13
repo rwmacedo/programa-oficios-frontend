@@ -3,11 +3,11 @@ const path = require('path');
 const app = express();
 
 // Servir os arquivos estáticos da pasta 'dist'
-app.use(express.static(path.join(__dirname, 'dist/programa-oficios-frontend/Browser')));
+app.use(express.static(path.join(__dirname, 'dist/programa-oficios-frontend/browser')));
 
 // Redirecionar todas as requisições para o 'index.html'
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/programa-oficios-frontend/Browser/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/programa-oficios-frontend/browser/index.html'));
 });
 
 // Configurar a porta para Heroku
