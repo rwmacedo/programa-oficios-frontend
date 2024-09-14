@@ -5,6 +5,18 @@
     
 }
 
+/* Cor dos títulos das colunas */
+.datatable-header .datatable-header-cell {
+  color: #343a40; /* Cor escura (dark) */
+  font-weight: bold; /* Opcional, para destaque */
+}
+
+/* Cor do conteúdo das células */
+.datatable-body-cell {
+  color: #6c757d; /* Cor secundária (secondary) */
+}
+
+
 /* Estilo geral do corpo */
 body {
     background-color: #005BA6; /* Fundo da página */
