@@ -62,7 +62,7 @@ body {
   
   /* Estilo dos botões */
   button {
-    background-color: #005BA6; 
+    background-color: #005CA9; 
     color: #FFFFFF;
     border: none;
     padding: 10px 20px;
@@ -91,10 +91,9 @@ body {
   
   .error-message {
     color: red;
-    font-size: 0.8rem; /* Adjust font size as needed */
-    margin-top: 5px; /* Add some space above the error message */
+    font-size: 20px; /* Adjust font size as needed */
    position:absolute;
-   top:10px;
+   top:20%;
    
   }
 
