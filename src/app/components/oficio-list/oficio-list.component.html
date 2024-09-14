@@ -3,7 +3,17 @@
     <div class="col-md-10">
       <div class="content-box p-4 shadow-sm bg-white rounded">
         <h2 class="text-primary text-center mb-4">Lista de Ofícios</h2>
-
+          <!-- Campo único de Pesquisa -->
+          <div class="col-md-4">
+            <input
+              type="text"
+              placeholder="Pesquisar"
+              class="form-control"
+              [(ngModel)]="searchTerm"
+              (input)="filterOficios()"
+            />
+          </div>
+          
         <div class="table-responsive">
           <ngx-datatable
             class="bootstrap"
