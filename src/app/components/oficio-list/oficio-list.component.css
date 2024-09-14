@@ -28,13 +28,29 @@ span {
 
 /* Estilo do botão "Novo Ofício" */
 .btn-novo-oficio {
-    background-color: #005BA6; /* Cor de fundo azul */
+    background-color: #005CA9; /* Cor de fundo azul */
     color: #FFFFFF; /* Cor do texto branco */
     border: none;
 }
 
 .btn-novo-oficio:hover {
     background-color: #004080; /* Cor mais escura ao passar o mouse */
+ }
+
+
+ button {
+  background-color: #005CA9; 
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #004080; 
 }
 
 /* Estilo personalizado para os botões de paginação */
