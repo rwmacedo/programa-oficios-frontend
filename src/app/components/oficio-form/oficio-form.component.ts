@@ -46,7 +46,7 @@ export class OficioFormComponent {
         this.oficio = data;
         // Converte a data para o formato YYYY-MM-DD, que o input[type="date"] aceita
         if (this.oficio.data) {
-          this.oficio.data = this.datePipe.transform(this.oficio.data, 'yyyy-MM-dd') as any;
+          this.oficio.data = this.datePipe.transform(new Date(this.oficio.data), 'yyyy-MM-dd') as any;
         }
       });
     }
