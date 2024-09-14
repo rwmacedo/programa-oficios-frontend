@@ -6,9 +6,9 @@
 }
 
 .datatable-header-cell {
-  color: #343a40 !important; /* Preto (dark) */
+  color: black !important; /* Preto (dark) */
   font-weight: bold !important; /* Negrito */
-  border-bottom: 2px solid #343a40; /* Linha inferior preta */
+  border-bottom: 3px solid black; /* Linha inferior preta */
 }
 
 /* Conteúdo da tabela em cor secondary */
