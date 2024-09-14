@@ -14,10 +14,9 @@ export class FileService {
 
   // Método para realizar o download do arquivo
   downloadFile(fileName: string): Observable<Blob> {
-    // Construa a URL corretamente e passe apenas o nome do arquivo
-    return this.http.get(`https://localhost:7163/api/files/download/${fileName}`, {
-      responseType: 'blob'  // Para garantir que a resposta seja tratada como um Blob
-    });
-  }
+   // Construa a URL corretamente usando a variável apiUrl do environment
+   return this.http.get(`${this.apiUrl}/download/${fileName}`, {
+    responseType: 'blob'  // Para garantir que a resposta seja tratada como um Blob
+  });
 }
-
+}
