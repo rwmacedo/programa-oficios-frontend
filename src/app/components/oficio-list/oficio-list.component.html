@@ -29,12 +29,38 @@
             [scrollbarH]="true"
             style="min-width: 1000px;"
           >
-            <!-- Títulos das colunas com texto dark e linha inferior -->
-            <ngx-datatable-column name="Número" prop="numero" [sortable]="true" [width]="20" headerClass="text-dark border-bottom"></ngx-datatable-column>
-            <ngx-datatable-column name="Ano" prop="ano" [sortable]="true" [width]="20" headerClass="text-dark border-bottom"></ngx-datatable-column>
-            <ngx-datatable-column name="Unidade" prop="unidade" [sortable]="true" [width]="20" headerClass="text-dark border-bottom"></ngx-datatable-column>
-            <ngx-datatable-column name="Data" prop="data" [pipe]="datePipe" [sortable]="true" [width]="20" headerClass="text-dark border-bottom"></ngx-datatable-column>
-            <ngx-datatable-column name="Ações" headerClass="text-dark border-bottom"></ngx-datatable-column>
+            <!-- Títulos das colunas com texto dark -->
+            <ngx-datatable-column name="Número" prop="numero" [sortable]="true" [width]="20" headerClass="text-dark border-bottom">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <span class="text-secondary">{{ row.numero }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Ano" prop="ano" [sortable]="true" [width]="20" headerClass="text-dark border-bottom">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <span class="text-secondary">{{ row.ano }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Unidade" prop="unidade" [sortable]="true" [width]="20" headerClass="text-dark border-bottom">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <span class="text-secondary">{{ row.unidade }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Data" prop="data" [pipe]="datePipe" [sortable]="true" [width]="20" headerClass="text-dark border-bottom">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <span class="text-secondary">{{ row.data | date: 'dd/MM/yyyy' }}</span>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Ações" headerClass="text-dark border-bottom">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <button class="btn btn-primary me-1" [routerLink]="['/edit', row.id]">Editar</button>
+                <button class="btn btn-danger me-1" (click)="deleteOficio(row.id)">Excluir</button>
+                <button class="btn btn-info" *ngIf="row.arquivoUrl" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">Download</button>
+              </ng-template>
+            </ngx-datatable-column>
           </ngx-datatable>
         </div>
 
