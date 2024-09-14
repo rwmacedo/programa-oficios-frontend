@@ -22,8 +22,6 @@ export class OficioListComponent {
   oficios: Oficio[] = [];
   filteredOficios: Oficio[] = []; // Para armazenar os ofícios filtrados
   searchTerm: string = ''; // Termo de pesquisa
-  selectedAno: string = ''; // Filtro por ano
-  selectedUnidade: string = ''; // Filtro por unidade
   anosDisponiveis: string[] = []; // Anos disponíveis para filtrar
   unidadesDisponiveis: string[] = []; // Unidades disponíveis para filtrar
   pageSize: number = 5; // Número de linhas por página
