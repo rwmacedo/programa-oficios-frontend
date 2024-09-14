@@ -1,11 +1,9 @@
 <div class="container-fluid mt-5 bg-primary">
   <div class="row justify-content-center">
     <div class="col-md-10">
-      <!-- Container para o conteúdo -->
       <div class="content-box p-4 shadow-sm bg-white rounded">
         <h2 class="text-primary text-center mb-4">Lista de Ofícios</h2>
 
-        <!-- Tabela de Ofícios com paginação e rolagem horizontal em telas menores -->
         <div class="table-responsive">
           <ngx-datatable
             class="bootstrap"
@@ -36,37 +34,13 @@
                 <button class="btn btn-info" *ngIf="row.arquivoUrl" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">Download</button>
               </ng-template>
             </ngx-datatable-column>
-
-            <ngx-datatable-footer>
-              <ng-template ngx-datatable-footer-template>
-                <div class="d-flex justify-content-end align-items-center custom-paginator">
-                  <div>
-                    <button (click)="goToFirstPage()">Primeira</button>
-                    <button (click)="goToPreviousPage()" [disabled]="pageOffset === 0">Anterior</button>
-                  </div>
-                  <div class="page-numbers mx-3">
-                    <span *ngFor="let page of getPages()">
-                      <button (click)="goToPage(page)" [class.active]="page === currentPage">{{ page + 1 }}</button>
-                    </span>
-                  </div>
-                  <div>
-                    <button (click)="goToNextPage()" [disabled]="isLastPage()">Próxima</button>
-                    <button (click)="goToLastPage()">Última</button>
-                  </div>
-                </div>
-              </ng-template>
-            </ngx-datatable-footer>
-
           </ngx-datatable>
-          
         </div>
 
-        <!-- Botão "Novo Ofício" alinhado abaixo da tabela -->
         <div class="d-flex justify-content-start mt-3">
           <button class="btn btn-success btn-novo-oficio" [routerLink]="['/new']">Novo Ofício</button>
         </div>
 
-        <!-- Controles de Paginação e Seleção de Tamanho da Página -->
         <div class="d-flex justify-content-between mt-3">
           <div>
             <label for="pageSize">Linhas por página:</label>
@@ -74,37 +48,16 @@
               <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
             </select>
           </div>
-        <!-- Campos de Pesquisa -->
-        <div class="row mb-3">
+          <!-- Campo único de Pesquisa -->
           <div class="col-md-4">
             <input
               type="text"
-              placeholder="Pesquisar por Número"
+              placeholder="Pesquisar"
               class="form-control"
               [(ngModel)]="searchTerm"
               (input)="filterOficios()"
             />
           </div>
-          <div class="col-md-4">
-            <input
-              type="number"
-              placeholder="Pesquisar por Ano"
-              class="form-control"
-              [(ngModel)]="selectedAno"
-              (input)="filterOficios()"
-            />
-          </div>
-          <div class="col-md-4">
-            <input
-              type="text"
-              placeholder="Pesquisar por Unidade"
-              class="form-control"
-              [(ngModel)]="selectedUnidade"
-              (input)="filterOficios()"
-            />
-          </div>
-        </div>
-
         </div>
       </div>
     </div>

@@ -65,21 +65,23 @@ export class OficioListComponent {
     );
   }
 
-  // Filtrar os ofícios com base no termo de pesquisa, ano, e unidade
-  filterOficios() {
-    this.filteredOficios = this.oficios.filter((oficio) => {
-      const matchesNumero = this.searchTerm ? 
-        oficio.numero.toLowerCase().includes(this.searchTerm.toLowerCase()) : true;
-  
-      const matchesAno = this.selectedAno ? 
-        oficio.ano.toString() === this.selectedAno.toString() : true;
-  
-      const matchesUnidade = this.selectedUnidade ? 
-        oficio.unidade.toLowerCase().includes(this.selectedUnidade.toLowerCase()) : true;
-  
-      return matchesNumero && matchesAno && matchesUnidade;
-    });
-  }
+ // Filtrar os ofícios com base no termo de pesquisa para todos os campos
+filterOficios() {
+  const term = this.searchTerm.toLowerCase(); // Converte o termo de pesquisa para minúsculas
+
+  this.filteredOficios = this.oficios.filter((oficio) => {
+    const matchesNumero = oficio.numero.toLowerCase().includes(term); // Verifica se o termo está no número
+    const matchesAno = oficio.ano.toString().includes(term); // Verifica se o termo está no ano
+    const matchesUnidade = oficio.unidade.toLowerCase().includes(term); // Verifica se o termo está na unidade
+    const matchesData = this.datePipe.transform(oficio.data, 'dd/MM/yyyy')?.includes(term); // Verifica se o termo está na data
+
+    // Retorna true se o termo de pesquisa estiver em qualquer um dos campos
+    return matchesNumero || matchesAno || matchesUnidade || matchesData;
+  });
+
+  // Atualiza o número total de linhas após o filtro
+  this.totalRows = this.filteredOficios.length;
+}
 
   // Paginação - Trocar de página
   onPage(event: any) {
