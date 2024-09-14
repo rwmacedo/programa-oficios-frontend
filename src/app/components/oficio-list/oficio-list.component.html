@@ -36,7 +36,7 @@
             <ngx-datatable-column name="Data" prop="data" [pipe]="datePipe" [sortable]="true" [width]="20" headerClass="text-dark border-bottom">
               <ng-template let-row="row" ngx-datatable-cell-template>
                 <!-- Conteúdo da tabela com texto secondary -->
-                <span class="text-secondary">{{ row.data | date: 'dd/MM/yyyy' }}</span>
+                {{ row.data | date: 'dd/MM/yyyy' }}
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Ações" headerClass="text-dark border-bottom">

@@ -6,9 +6,9 @@
 }
 
 /* Aplicar cor de texto dark nos títulos das colunas */
-.datatable-header .datatable-header-cell {
+span {
   color: #343a40; /* Cor escura para os títulos (equivalente a text-dark) */
-  
+
 }
 
 /* Aplicar cor de texto secondary no conteúdo das células */
