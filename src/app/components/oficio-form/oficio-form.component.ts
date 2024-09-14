@@ -66,36 +66,44 @@ export class OficioFormComponent {
     }
   }
 
-  // Função para salvar o ofício
-  saveOficio() {
-    if (this.selectedFile) {
-      // Se um arquivo foi selecionado, faz o upload
-      this.fileUploadService.uploadFile(this.selectedFile).subscribe(
-        (response) => {
-          this.oficio.arquivoUrl = response.url;  // Associa a URL do arquivo ao ofício
-          this.persistOficio();  // Salva o ofício com a URL do arquivo
-        },
-        (error) => {
-          console.error('Erro no upload:', error);
-        }
-      );
-    } else if (!this.fileError) {  // Apenas salva o ofício se não houver erro de arquivo
-      this.persistOficio();
+// Função para salvar o ofício
+saveOficio() {
+  if (this.oficio.data) {
+    // Verifica se o Kind da data é "Unspecified" e converte para UTC
+    const data = new Date(this.oficio.data);
+    if (data.getTimezoneOffset() !== 0) {
+      this.oficio.data = new Date(data.getTime() - (data.getTimezoneOffset() * 60000));  // Converte para UTC
     }
   }
 
-  // Função auxiliar para salvar ou atualizar o ofício
-  persistOficio() {
-    if (this.oficio.id) {
-      this.oficioService.updateOficio(this.oficio.id, this.oficio).subscribe(() => {
-        this.router.navigate(['/']);
-      });
-    } else {
-      this.oficioService.createOficio(this.oficio).subscribe(() => {
-        this.router.navigate(['/']);
-      });
-    }
+  if (this.selectedFile) {
+    // Se um arquivo foi selecionado, faz o upload
+    this.fileUploadService.uploadFile(this.selectedFile).subscribe(
+      (response) => {
+        this.oficio.arquivoUrl = response.url;  // Associa a URL do arquivo ao ofício
+        this.persistOficio();  // Salva o ofício com a URL do arquivo
+      },
+      (error) => {
+        console.error('Erro no upload:', error);
+      }
+    );
+  } else if (!this.fileError) {  // Apenas salva o ofício se não houver erro de arquivo
+    this.persistOficio();
   }
+}
+
+// Função auxiliar para salvar ou atualizar o ofício
+persistOficio() {
+  if (this.oficio.id) {
+    this.oficioService.updateOficio(this.oficio.id, this.oficio).subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  } else {
+    this.oficioService.createOficio(this.oficio).subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
+}
 
   // Função para redirecionar à página inicial
   goBack() {
