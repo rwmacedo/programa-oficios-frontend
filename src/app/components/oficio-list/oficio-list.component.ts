@@ -29,6 +29,7 @@ export class OficioListComponent {
   pageSizes: number[] = [5, 10, 20, 50]; // Opções de número de linhas por página
   totalRows: number = 0;
   currentPage: number = 0;
+  
 
   columns = [
     { name: 'ID', prop: 'id' },
