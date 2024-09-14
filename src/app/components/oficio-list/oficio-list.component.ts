@@ -81,7 +81,11 @@ filterOficios() {
   // Atualiza o número total de linhas após o filtro
   this.totalRows = this.filteredOficios.length;
 }
-
+onFooterPage(event: any) {
+  this.pageOffset = event.offset;  // Atualiza o deslocamento da página
+  // Adicione aqui a lógica para carregar novos dados, se necessário
+  console.log('Página alterada:', event);
+}
   // Paginação - Trocar de página
   onPage(event: any) {
     this.pageOffset = event.offset;
