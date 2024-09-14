@@ -38,37 +38,39 @@ span {
 }
 
 /* Estilo personalizado para os botões de paginação */
-.pagination .page-link {
-  color: #6c757d; /* Cor dos links */
-  background-color: transparent; /* Remover fundo padrão */
-  border: none; /* Remover bordas */
+.custom-paginator {
+  width: 100%; /* Ocupa toda a largura disponível */
+  justify-content: right; /* Alinha os botões à direita */
 }
 
-.pagination .page-item.active .page-link {
-  background-color: #343a40; /* Fundo preto para a página ativa */
-  color: white; /* Texto branco para a página ativa */
-  border-radius: 50%; /* Tornar o botão da página ativa circular */
-  padding: 0.5rem 0.75rem; /* Espaçamento */
+.custom-paginator button {
+  background-color: transparent; 
+  border: none; 
+  color: #005BA6; 
+  font-size: 16px; 
+  padding: 5px 10px; 
+  cursor: pointer; 
 }
 
-.pagination .page-item.disabled .page-link {
-  color: #6c757d; /* Cor cinza para itens desativados */
+.custom-paginator button:hover {
+  text-decoration: underline; 
 }
 
-.pagination .page-item:not(.active) .page-link {
-  color: #343a40; /* Cor preta para os links não ativos */
+.custom-paginator button:disabled {
+  color: #cccccc;
+  cursor: not-allowed; 
 }
 
-.pagination .page-link:hover {
-  text-decoration: none; /* Remover sublinhado ao passar o mouse */
-  color: #343a40; /* Cor preta ao passar o mouse */
+
+.custom-paginator .page-numbers {
+  display: inline-block;
+  margin: 0 10px;
 }
 
-.pagination .page-item .page-link {
-  font-size: 1rem; /* Ajusta o tamanho da fonte */
-  padding: 0.5rem 0.75rem; /* Ajusta o espaçamento */
+.custom-paginator .page-numbers button {
+  margin: 0 3px;
 }
 
-.pagination .page-item.disabled .page-link {
-  cursor: default; /* Desabilitar o cursor para itens inativos */
+.custom-paginator .active {
+  font-weight: bold; /* Botão da página ativa em negrito */
 }
