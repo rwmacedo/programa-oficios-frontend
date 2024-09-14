@@ -5,18 +5,21 @@
     
 }
 
-/* Aplicar cor de texto dark nos títulos das colunas */
-span {
-  color: #343a40; /* Cor escura para os títulos (equivalente a text-dark) */
-
+.datatable-header-cell {
+  color: #343a40 !important; /* Preto (dark) */
+  font-weight: bold !important; /* Negrito */
+  border-bottom: 2px solid #343a40; /* Linha inferior preta */
 }
 
-/* Aplicar cor de texto secondary no conteúdo das células */
+/* Conteúdo da tabela em cor secondary */
 .datatable-body-cell {
   color: #6c757d; /* Cor secundária para o conteúdo das células */
 }
 
-
+/* Aplicar cor de texto dark nos títulos das colunas */
+span {
+  color: #343a40; /* Cor escura para os títulos (equivalente a text-dark) */
+}
 
 /* Botão abaixo da tabela */
 .d-flex {
