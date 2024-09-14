@@ -1,4 +1,4 @@
-<div class="container-fluid mt-5 bg-primary">
+<div class="container-fluid bg-white">
   <div class="row justify-content-center">
     <div class="col-md-10">
       <div class="content-box p-4 shadow-sm bg-white rounded">
@@ -13,7 +13,7 @@
               (input)="filterOficios()"
             />
           </div>
-          
+
         <div class="table-responsive">
           <ngx-datatable
             class="bootstrap"
@@ -59,15 +59,7 @@
             </select>
           </div>
           <!-- Campo único de Pesquisa -->
-          <div class="col-md-4">
-            <input
-              type="text"
-              placeholder="Pesquisar"
-              class="form-control"
-              [(ngModel)]="searchTerm"
-              (input)="filterOficios()"
-            />
-          </div>
+         
         </div>
       </div>
     </div>

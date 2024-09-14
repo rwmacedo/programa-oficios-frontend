@@ -1,7 +1,7 @@
 /* Estilo geral do corpo */
 /* Estilo do cabeçalho */
 header {
-    background-color: #FFFFFF; 
+    background-color: #005BA6; 
     padding: 0px 20px;
     display: flex;
     justify-content: space-between;
@@ -16,6 +16,7 @@ header {
   header .header-content {
     display: flex;
     align-items: center;
+    background-color: #005BA6;
   }
 
 body {
