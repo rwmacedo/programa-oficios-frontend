@@ -59,7 +59,7 @@
                 <span *ngIf="!row">Sem dados</span> <!-- Adicionado para verificar -->
                 <button class="btn btn-primary me-1" [routerLink]="['/edit', row.id]">Editar</button>
                 <button class="btn btn-danger me-1" (click)="deleteOficio(row.id)">Excluir</button>
-                <button class="btn btn-info" *ngIf="row.arquivoUrl" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">Download</button>
+                <button class="btn btn-success" *ngIf="row.arquivoUrl" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">Download</button>
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>
