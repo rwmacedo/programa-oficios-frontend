@@ -5,11 +5,10 @@
     
 }
 
-
-
 /* Aplicar cor de texto dark nos títulos das colunas */
 .datatable-header .datatable-header-cell {
   color: #343a40; /* Cor escura para os títulos (equivalente a text-dark) */
+  
 }
 
 /* Aplicar cor de texto secondary no conteúdo das células */
@@ -17,29 +16,6 @@
   color: #6c757d; /* Cor secundária para o conteúdo das células */
 }
 
-/* Estilo geral do corpo */
-body {
-    background-color: #005BA6; /* Fundo da página */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-
-.content-box {
-    background-color: #FFFFFF; /* Fundo branco */
-    padding: 20px; /* Espaçamento interno */
-    border-radius: 10px; /* Bordas arredondadas */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
-    margin: 60px auto 30px auto;
-   
-
-}
-
-/* Estilo do título */
-h2 {
-    color: #005BA6; /* Cor do título */
-}
 
 
 /* Botão abaixo da tabela */
