@@ -2,19 +2,19 @@
   <div class="row justify-content-center">
     <div class="col-md-10">
       <div class="content-box p-4 shadow-sm bg-white rounded">
-        <h2 class="text-primary text-center mb-4">Lista de Ofícios</h2>
-          <!-- Campo único de Pesquisa -->
-          <div class="col-md-4">
-            <input
-              type="text"
-              placeholder="Pesquisar"
-              class="form-control"
-              [(ngModel)]="searchTerm"
-              (input)="filterOficios()"
-            />
-          </div>
+        <h2 class="text-dark text-start mb-4">Lista de Ofícios</h2>
+        <!-- Campo único de Pesquisa -->
+        <div class="col-md-4">
+          <input
+            type="text"
+            placeholder="Pesquisar"
+            class="form-control"
+            [(ngModel)]="searchTerm"
+            (input)="filterOficios()"
+          />
+        </div>
 
-        <div class="table-responsive">
+        <div class="table-responsive text-secondary">
           <ngx-datatable
             class="bootstrap"
             [rows]="filteredOficios"
@@ -29,10 +29,10 @@
             [scrollbarH]="true"
             style="min-width: 1000px;"
           >
-            <ngx-datatable-column name="Número" prop="numero" [width]="20"></ngx-datatable-column>
-            <ngx-datatable-column name="Ano" prop="ano" [width]="20"></ngx-datatable-column>
-            <ngx-datatable-column name="Unidade" prop="unidade" [width]="20"></ngx-datatable-column>
-            <ngx-datatable-column name="Data" prop="data" [pipe]="datePipe" [width]="20">
+            <ngx-datatable-column name="Número" prop="numero" [sortable]="true" [width]="20"></ngx-datatable-column>
+            <ngx-datatable-column name="Ano" prop="ano" [sortable]="true" [width]="20"></ngx-datatable-column>
+            <ngx-datatable-column name="Unidade" prop="unidade" [sortable]="true" [width]="20"></ngx-datatable-column>
+            <ngx-datatable-column name="Data" prop="data" [pipe]="datePipe" [sortable]="true" [width]="20">
               <ng-template let-row="row" ngx-datatable-cell-template>
                 {{ row.data | date: 'dd/MM/yyyy' }}
               </ng-template>
@@ -58,8 +58,6 @@
               <option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
             </select>
           </div>
-          <!-- Campo único de Pesquisa -->
-         
         </div>
       </div>
     </div>
