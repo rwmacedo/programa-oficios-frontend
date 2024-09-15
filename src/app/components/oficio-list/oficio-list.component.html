@@ -27,7 +27,7 @@
             [offset]="pageOffset"
             (page)="onPage($event)"
             [scrollbarH]="true"
-            style="min-width: 1000px;"
+            
           >
             <!-- Títulos das colunas com texto dark -->
             <ngx-datatable-column name="Número" prop="numero" [sortable]="true" [width]="20" headerClass="text-dark border-bottom">
@@ -59,21 +59,21 @@
                 <span *ngIf="!row">Sem dados</span> <!-- Verificação de dados -->
             
                 <!-- Ícone de Editar (Bootstrap) -->
-                <a [routerLink]="['/edit', row.id]" class="text-secundary me-1">
+                <a [routerLink]="['/edit', row.id]" class="text-secondary me-1"> <!-- Corrigido para "text-secondary" -->
                   <i class="bi bi-pencil" style="font-size: 1.5rem;"></i>
                 </a>
             
                 <!-- Ícone de Excluir (Bootstrap) -->
-                <a href="#" class="text-secundary me-1" (click)="deleteOficio(row.id)">
+                <a href="#" class="text-secondary me-1" (click)="deleteOficio(row.id)"> <!-- Corrigido para "text-secondary" -->
                   <i class="bi bi-trash" style="font-size: 1.5rem;"></i>
                 </a>
             
-                <!-- Ícone de Download (Glyphicons) -->
-                <a *ngIf="row.arquivoUrl" href="#" class="text-secundary" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">
+                <!-- Ícone de Download (Bootstrap Icons) -->
+                <a *ngIf="row.arquivoUrl" href="#" class="text-secondary" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))"> <!-- Corrigido para "text-secondary" -->
                   <i class="bi bi-download" style="font-size: 1.5rem;"></i>
                 </a>
               </ng-template>
-            </ngx-datatable-column>           
+            </ngx-datatable-column>          
          </ngx-datatable>
         </div>
 
