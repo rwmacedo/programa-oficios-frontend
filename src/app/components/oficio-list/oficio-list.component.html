@@ -56,15 +56,26 @@
 
             <ngx-datatable-column name="Ações" headerClass="text-dark border-bottom">
               <ng-template let-row="row" ngx-datatable-cell-template>
-                <span *ngIf="!row">Sem dados</span> <!-- Adicionado para verificar -->
-                <button class="btn btn-primary me-1" [routerLink]="['/edit', row.id]">Editar</button>
-                <button class="btn btn-danger me-1" (click)="deleteOficio(row.id)">Excluir</button>
-                <button class="btn btn-info text-white" *ngIf="row.arquivoUrl" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">Download</button>
+                <span *ngIf="!row">Sem dados</span> <!-- Verificação de dados -->
+            
+                <!-- Ícone de Editar -->
+                <a [routerLink]="['/edit', row.id]">
+                  <img src="assets/img/editar.png" alt="Editar" width="24" height="24" />
+                </a>
+            
+                <!-- Ícone de Excluir -->
+                <a href="#" (click)="deleteOficio(row.id)">
+                  <img src="assets/img/excluir.png" alt="Excluir" width="24" height="24" />
+                </a>
+            
+                <!-- Ícone de Download (exibido apenas se houver arquivo) -->
+                <a *ngIf="row.arquivoUrl" href="#" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">
+                  <img src="assets/img/download.png" alt="Download" width="24" height="24" />
+                </a>
+                
               </ng-template>
             </ngx-datatable-column>
-          </ngx-datatable>
-        </div>
-
+            
         <div class="d-flex justify-content-start mt-3">
           <button class="btn btn-success btn-novo-oficio" [routerLink]="['/new']">Novo Ofício</button>
         </div>
