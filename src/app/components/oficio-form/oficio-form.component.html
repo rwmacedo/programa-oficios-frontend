@@ -38,12 +38,12 @@
                 [(ngModel)]="oficio.ano" 
                 name="ano" 
                 required 
-                minlength="4" 
-                maxlength="4" 
+                min="1990" 
+                max="9999"
                 #ano="ngModel">
-              <div *ngIf="ano.invalid && ano.touched" class="text-danger error-message">
+              <div *ngIf="ano.invalid && ano.touched  " class="text-danger error-message">
                 <small *ngIf="ano.errors?.['required']">O ano é obrigatório.</small>
-                <small *ngIf="ano.errors?.['minlength'] || ano.errors?.['maxlength']">O ano deve ter 4 dígitos.</small>
+                <small *ngIf="ano.errors?.['min'] || ano.errors?.['max']">O ano deve ter 4 dígitos.</small>
               </div>
             </div>
 
@@ -60,7 +60,7 @@
                 minlength="4" 
                 maxlength="4" 
                 #unidade="ngModel">
-              <div *ngIf="unidade.invalid && unidade.touched" class="text-danger error-message">
+              <div *ngIf="unidade.invalid && unidade.touched " class="text-danger error-message">
                 <small *ngIf="unidade.errors?.['required']">A unidade é obrigatória.</small>
                 <small *ngIf="unidade.errors?.['minlength'] || unidade.errors?.['maxlength']">A unidade deve ter 4 dígitos.</small>
               </div>

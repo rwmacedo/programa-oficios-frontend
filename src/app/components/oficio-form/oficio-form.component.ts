@@ -18,6 +18,7 @@ import { DatePipe } from '@angular/common';
 })
 export class OficioFormComponent {
 
+
   oficio: Oficio = {
     id: 0,
     numero: '',
@@ -28,8 +29,9 @@ export class OficioFormComponent {
   };
 
   selectedFile: File | null = null;
-  fileError: string | null = null;  // <--- Adicionando variável para o erro do arquivo
+  fileError: string | null = null;  
   
+
   constructor(
     private oficioService: OficioService,
     private route: ActivatedRoute,
@@ -38,6 +40,8 @@ export class OficioFormComponent {
     private fileService: FileService,
     private datePipe: DatePipe
   ) { }
+
+  
   
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -66,15 +70,18 @@ export class OficioFormComponent {
     }
   }
 
+  
+
 // Função para salvar o ofício
 saveOficio() {
-  if (this.oficio.data) {
+ if (this.oficio.data) {
     // Verifica se o Kind da data é "Unspecified" e converte para UTC
     const data = new Date(this.oficio.data);
     if (data.getTimezoneOffset() !== 0) {
       this.oficio.data = new Date(data.getTime() - (data.getTimezoneOffset() * 60000));  // Converte para UTC
     }
   }
+
 
   if (this.selectedFile) {
     // Se um arquivo foi selecionado, faz o upload
@@ -125,4 +132,8 @@ persistOficio() {
     });
   }
   
+
+
+
+
 }
