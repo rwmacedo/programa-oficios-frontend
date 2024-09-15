@@ -58,22 +58,22 @@
               <ng-template let-row="row" ngx-datatable-cell-template>
                 <span *ngIf="!row">Sem dados</span> <!-- Verificação de dados -->
             
-                <!-- Ícone de Editar -->
+                <!-- Ícone de Editar (Bootstrap) -->
                 <a [routerLink]="['/edit', row.id]" class="text-primary me-1">
                   <i class="bi bi-pencil" style="font-size: 1.5rem;"></i>
                 </a>
             
-                <!-- Botão de Excluir -->
-                <button class="btn btn-danger me-1" (click)="deleteOficio(row.id)">
-                  Excluir
-                </button>
+                <!-- Ícone de Excluir (Bootstrap) -->
+                <a href="#" class="text-danger me-1" (click)="deleteOficio(row.id)">
+                  <i class="bi bi-trash" style="font-size: 1.5rem;"></i>
+                </a>
             
-                <!-- Botão de Download (permanece como botão) -->
-                <button class="btn btn-info text-white" *ngIf="row.arquivoUrl" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">
-                  Download
-                </button>
+                <!-- Ícone de Download (Glyphicons) -->
+                <a *ngIf="row.arquivoUrl" href="#" class="text-info" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">
+                  <i class="glyphicon glyphicon-download-alt" style="font-size: 1.5rem;"></i>
+                </a>
               </ng-template>
-            </ngx-datatable-column>               
+            </ngx-datatable-column>           
          </ngx-datatable>
         </div>
 
