@@ -59,12 +59,12 @@
                 <span *ngIf="!row">Sem dados</span> <!-- Verificação de dados -->
             
                 <!-- Ícone de Editar (Bootstrap) -->
-                <a [routerLink]="['/edit', row.id]" class="text-secundary me-2">
+                <a [routerLink]="['/edit', row.id]" class="text-secundary me-1">
                   <i class="bi bi-pencil" style="font-size: 1.5rem;"></i>
                 </a>
             
                 <!-- Ícone de Excluir (Bootstrap) -->
-                <a href="#" class="text-secundary me-2" (click)="deleteOficio(row.id)">
+                <a href="#" class="text-secundary me-1" (click)="deleteOficio(row.id)">
                   <i class="bi bi-trash" style="font-size: 1.5rem;"></i>
                 </a>
             
