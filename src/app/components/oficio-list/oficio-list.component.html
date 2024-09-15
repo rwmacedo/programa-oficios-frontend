@@ -60,17 +60,17 @@
             
                 <!-- Ícone de Editar -->
                 <a [routerLink]="['/edit', row.id]">
-                  <img src="assets/img/editar.png" alt="Editar" width="24" height="24" />
+                  <img src="../../../../src/assets/img/editar.png" alt="Editar" width="24" height="24" />
                 </a>
             
                 <!-- Ícone de Excluir -->
                 <a href="#" (click)="deleteOficio(row.id)">
-                  <img src="assets/img/excluir.png" alt="Excluir" width="24" height="24" />
+                  <img src="../../../../src/assets/img/excluir.png" alt="Excluir" width="24" height="24" />
                 </a>
             
                 <!-- Ícone de Download (exibido apenas se houver arquivo) -->
                 <a *ngIf="row.arquivoUrl" href="#" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">
-                  <img src="assets/img/download.png" alt="Download" width="24" height="24" />
+                  <img src="../../../../src/assets/img/download.png" alt="Download" width="24" height="24" />
                 </a>
                 
               </ng-template>
