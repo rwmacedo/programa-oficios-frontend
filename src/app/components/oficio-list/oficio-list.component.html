@@ -59,17 +59,17 @@
                 <span *ngIf="!row">Sem dados</span> <!-- Verificação de dados -->
             
                 <!-- Ícone de Editar (Bootstrap) -->
-                <a [routerLink]="['/edit', row.id]" class="text-adrk me-2">
+                <a [routerLink]="['/edit', row.id]" class="text-secundary me-2">
                   <i class="bi bi-pencil" style="font-size: 1.5rem;"></i>
                 </a>
             
                 <!-- Ícone de Excluir (Bootstrap) -->
-                <a href="#" class="text-dark me-2" (click)="deleteOficio(row.id)">
+                <a href="#" class="text-secundary me-2" (click)="deleteOficio(row.id)">
                   <i class="bi bi-trash" style="font-size: 1.5rem;"></i>
                 </a>
             
                 <!-- Ícone de Download (Glyphicons) -->
-                <a *ngIf="row.arquivoUrl" href="#" class="text-dark" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">
+                <a *ngIf="row.arquivoUrl" href="#" class="text-secundary" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">
                   <i class="bi bi-download" style="font-size: 1.5rem;"></i>
                 </a>
               </ng-template>
