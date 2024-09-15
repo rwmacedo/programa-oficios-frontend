@@ -57,7 +57,9 @@
             <ngx-datatable-column name="Ações" headerClass="text-dark border-bottom">
               <ng-template let-row="row" ngx-datatable-cell-template>
                 <span *ngIf="!row">Sem dados</span> <!-- Adicionado para verificar -->
-                <button class="btn btn-primary me-1" [routerLink]="['/edit', row.id]"><img src="editar.png"></button>
+                <a [routerLink]="['/edit', row.id]">
+                  <img src="assets/img/editar.png" alt="Editar" width="24" height="24" />
+                </a>
                 <button class="btn btn-danger me-1" (click)="deleteOficio(row.id)">Excluir</button>
                 <button class="btn btn-info text-white" *ngIf="row.arquivoUrl" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))">Download</button>
               </ng-template>
