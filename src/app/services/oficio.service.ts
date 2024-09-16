@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class OficioService {
 
   private apiUrl = environment.apiURL + '/Oficios'; // URL da API criada no backend
-  private apiUrlpdf = environment.apiURL + '/'; // URL da API criada no backend
+  private apiUrlpdf = environment.apiURL + ''; // URL da API criada no backend
 
   constructor(private http: HttpClient) { }
   
