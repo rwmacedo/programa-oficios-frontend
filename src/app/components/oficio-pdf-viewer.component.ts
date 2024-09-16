@@ -6,7 +6,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-oficio-pdf-viewer',
   templateUrl: './oficio-pdf-viewer.component.html',
-  styleUrls: []
+  styleUrls: ['./oficio-pdf-viewer.component.css']
 })
 export class OficioPdfViewerComponent implements OnInit {
 

@@ -1,0 +1,13 @@
+h2{
+    text-align: left;
+}
+
+button{
+    background-color: #F7BC65;
+    color: #FFFFFF;
+}
+
+button:hover {
+  background-color: #d69b42;
+  color: #FFFFFF;
+}
