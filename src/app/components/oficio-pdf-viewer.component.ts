@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OficioService } from '../services/oficio.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FileService } from '../services/file.service';
 
 @Component({
   selector: 'app-oficio-pdf-viewer',
@@ -21,6 +22,7 @@ export class OficioPdfViewerComponent implements OnInit {
     private oficioService: OficioService,
     private sanitizer: DomSanitizer,
     private router: Router,
+    private fileService: FileService
   ) {}
 
   ngOnInit(): void {
@@ -36,24 +38,14 @@ export class OficioPdfViewerComponent implements OnInit {
     }
 
     const fileName = this.route.snapshot.paramMap.get('fileName')!;  // Agora buscamos o fileName
-    this.loadPdf(fileName);
+    this.loadPdf();
   }
 
   // Função para carregar o PDF e abrir em nova aba
-  loadPdf(fileName: string) {
-    this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
-      console.log('Tipo de arquivo retornado:', blob.type);  // application/pdf
-      console.log('Tamanho do Blob:', blob.size);  // Verifique o tamanho do PDF
-    
-      // Gere a URL do Blob e tente abrir o PDF em uma nova aba
-      const fileURL = URL.createObjectURL(blob);
-      console.log('URL gerada para o PDF:', fileURL);  // Verifique a URL gerada
-      window.open(fileURL);  // Abra o PDF em uma nova aba
-      
-      this.isLoading = false;  // Quando o PDF for carregado, pare de mostrar o status de carregamento
-    }, error => {
-      console.error('Erro ao carregar o PDF', error);
-      this.isLoading = false;  // Pare de mostrar o status de carregamento em caso de erro
+  loadPdf(): void {
+    this.fileService.getPdf().subscribe(blob => {
+      const url = URL.createObjectURL(blob);
+      this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     });
   }
 
