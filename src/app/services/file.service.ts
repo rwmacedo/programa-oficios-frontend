@@ -23,8 +23,8 @@ export class FileService {
 getPdfUrl(id: number): Observable<Blob> {
   return this.http.get(`${this.apiUrl}/${id}/download`, { responseType: 'blob' });
 }
-getPdf(): Observable<Blob> {
-  return this.http.get(this.apiUrl, { responseType: 'blob' });
+getPdf(fileName:string): Observable<Blob> {
+  return this.http.get(`this.apiUrl/download/${fileName}`, { responseType: 'blob' });
 }
 
 }

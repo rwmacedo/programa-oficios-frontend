@@ -38,12 +38,12 @@ export class OficioPdfViewerComponent implements OnInit {
     }
 
     const fileName = this.route.snapshot.paramMap.get('fileName')!;  // Agora buscamos o fileName
-    this.loadPdf();
+    this.loadPdf(fileName);
   }
 
   // Função para carregar o PDF e abrir em nova aba
-  loadPdf(): void {
-    this.fileService.getPdf().subscribe(blob => {
+  loadPdf(fileName:string): void {
+    this.fileService.getPdf(fileName).subscribe(blob => {
       const url = URL.createObjectURL(blob);
       this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     });
