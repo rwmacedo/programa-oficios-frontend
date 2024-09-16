@@ -1,5 +1,17 @@
+
+
+
+
 <div class="container">
     <h2>Visualização do Ofício</h2>
+
+     <!-- Botões -->
+     <div class="button-group col-md-12 d-flex justify-content-start">
+           <button 
+        type="button" 
+        (click)="goBack()" 
+        class="btn botao_voltar ms-2">Voltar</button>
+     </div>
     <div *ngIf="pdfUrl">
       <embed [src]="pdfUrl" type="application/pdf" width="100%" height="600px" />
     </div>

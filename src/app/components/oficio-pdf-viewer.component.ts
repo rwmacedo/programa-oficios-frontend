@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OficioService } from '../services/oficio.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -16,13 +16,20 @@ export class OficioPdfViewerComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private oficioService: OficioService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     const fileName = this.route.snapshot.paramMap.get('fileName')!;  // Agora buscamos o fileName
     this.loadPdf(fileName);
   }
+
+    // Função para redirecionar à página inicial
+    goBack() {
+      this.router.navigate(['/']);
+    }
+  
 
   loadPdf(fileName: string) {
     this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
