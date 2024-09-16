@@ -25,6 +25,7 @@ getPdfUrl(id: number): Observable<Blob> {
 }
 getPdf(fileName:string): Observable<Blob> {
   let url= `${this.apiUrl}/download/${fileName}`;
+  console.log("url: " + url)
   return this.http.get(url, { responseType: 'blob' });
 }
 
