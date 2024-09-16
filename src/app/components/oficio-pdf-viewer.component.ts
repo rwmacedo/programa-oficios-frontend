@@ -51,7 +51,7 @@ export class OficioPdfViewerComponent implements OnInit {
         const url = URL.createObjectURL(blob);
         console.log("Blob recebido:", blob);
         console.log("URL gerada:", url);
-        this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+        this.pdfUrl = url;
         this.isLoading = false;  // Carregamento completo
       },
       error: (error) => {
