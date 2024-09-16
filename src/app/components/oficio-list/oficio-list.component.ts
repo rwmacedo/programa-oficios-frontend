@@ -8,7 +8,7 @@ import { FileService } from '../../services/file.service';
 import { firstValueFrom } from 'rxjs';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable'; // Importação do ngx-datatable
 import { FormsModule } from '@angular/forms'; // Importar o FormsModule para ngModel
-import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-oficio-list',
@@ -30,7 +30,7 @@ export class OficioListComponent {
   pageSizes: number[] = [5, 10, 20, 50]; // Opções de número de linhas por página
   totalRows: number = 0;
   currentPage: number = 0;
-  isLoading: boolean = true;
+  
 
   columns = [
     { name: 'ID', prop: 'id' },
@@ -46,7 +46,7 @@ export class OficioListComponent {
     private http: HttpClient,
     private fileService: FileService, // Injeção correta do FileService
     public datePipe: DatePipe,
-    private sanitizer: DomSanitizer
+ 
   ) { }
 
   ngOnInit(): void {
@@ -167,20 +167,5 @@ filterOficios() {
     return decodeURIComponent(url.substring(url.lastIndexOf('/') + 1));
   }
 
-  loadPdf(fileName: string) {
-    this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
-      console.log('Tipo de arquivo retornado:', blob.type);  // application/pdf
-      console.log('Tamanho do Blob:', blob.size);  // Verifique o tamanho do PDF
-    
-      // Gere a URL do Blob e tente abrir o PDF em uma nova aba
-      const fileURL = URL.createObjectURL(blob);
-      console.log('URL gerada para o PDF:', fileURL);  // Verifique a URL gerada
-      window.open(fileURL);  // Abra o PDF em uma nova aba
-      
-      this.isLoading = false;  // Quando o PDF for carregado, pare de mostrar o status de carregamento
-    }, error => {
-      console.error('Erro ao carregar o PDF', error);
-      this.isLoading = false;  // Pare de mostrar o status de carregamento em caso de erro
-    });
-  }
+
   }

@@ -80,6 +80,9 @@
               <div *ngIf="data.invalid && data.touched" class="text-danger error-message">
                 <small *ngIf="data.errors?.['required']">A data é obrigatória.</small>
               </div>
+              <div *ngIf="!isDateValid() && data.touched" class="text-danger error-message">
+                <small>A data não pode ser futura.</small>
+              </div>
             </div>
 
             <!-- Escolher Arquivo -->
