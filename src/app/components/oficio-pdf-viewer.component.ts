@@ -24,12 +24,13 @@ export class OficioPdfViewerComponent implements OnInit {
 
   loadPdf(fileName: string) {
     this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
-      
-        const fileURL = URL.createObjectURL(blob);
-        this.pdfUrl = fileURL;
-       this.isLoading = false;  // Quando o PDF for carregado, pare de mostrar o status de carregamento
-   
-    }
-  )}
+      // Ignora a verificação do tipo para teste
+      const fileURL = URL.createObjectURL(blob);
+      this.pdfUrl = fileURL;  // Defina a URL do PDF para exibição
+      this.isLoading = false;  // Quando o PDF for carregado, pare de mostrar o status de carregamento
+    }, error => {
+      console.error('Erro ao carregar o PDF', error);
+      this.isLoading = false;  // Pare de mostrar o status de carregamento em caso de erro
+    });
+  }
 }
-
