@@ -28,12 +28,12 @@ export class OficioPdfViewerComponent implements OnInit {
     this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
       console.log('Tipo de arquivo retornado:', blob.type);  // application/pdf
       console.log('Tamanho do Blob:', blob.size);  // Verifique o tamanho do PDF
-  
-      // Gere a URL do Blob e exiba o PDF
+    
+      // Gere a URL do Blob e tente abrir o PDF em uma nova aba
       const fileURL = URL.createObjectURL(blob);
       console.log('URL gerada para o PDF:', fileURL);  // Verifique a URL gerada
-      this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(fileURL);  // Atribua a URL gerada para exibir o PDF
-  
+      window.open(fileURL);  // Abra o PDF em uma nova aba
+      
       this.isLoading = false;  // Quando o PDF for carregado, pare de mostrar o status de carregamento
     }, error => {
       console.error('Erro ao carregar o PDF', error);
