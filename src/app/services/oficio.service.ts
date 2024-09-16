@@ -14,7 +14,7 @@ export class OficioService {
 
   constructor(private http: HttpClient) { }
   
-// Método para buscar o arquivo PDF do backend pelo ID
+// Método para buscar o arquivo PDF do backend pelo nome do arquivo
 getPdfUrl(fileName: string): Observable<Blob> {
   return this.http.get(`${this.apiUrl}/Files/download/${fileName}`, { responseType: 'blob' });
 }

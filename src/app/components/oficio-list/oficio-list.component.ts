@@ -161,6 +161,7 @@ filterOficios() {
     }
   }
   getFileNameFromUrl(url: string): string {
-    return url.substring(url.lastIndexOf('/') + 1);  // Extrai o nome do arquivo da URL
+    // Supondo que a URL seja algo como 'https://azurestorage.com/OFICIO0001.pdf'
+    return decodeURIComponent(url.substring(url.lastIndexOf('/') + 1));
   }
   }
