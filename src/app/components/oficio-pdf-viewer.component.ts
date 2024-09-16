@@ -53,6 +53,9 @@ export class OficioPdfViewerComponent implements OnInit {
         console.log("URL gerada:", url);
         this.pdfUrl = url;
         this.isLoading = false;  // Carregamento completo
+
+        console.log('pdfUrl:', this.pdfUrl);
+        console.log('isLoading:', this.isLoading);
       },
       error: (error) => {
         console.error('Erro ao carregar o PDF:', error);
