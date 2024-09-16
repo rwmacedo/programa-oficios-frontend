@@ -12,6 +12,11 @@ export class OficioPdfViewerComponent implements OnInit {
 
   pdfUrl: SafeResourceUrl = '';  // Alterado para SafeResourceUrl
   isLoading: boolean = true;  // Flag para mostrar o status de carregamento
+  oficio = {
+    numero: '',
+    unidade: '',
+    ano: ''
+  };
 
   constructor(
     private route: ActivatedRoute,
