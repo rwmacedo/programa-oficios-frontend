@@ -13,9 +13,6 @@
      </div>
 
      <!-- Exibir PDF -->
-
-     <canvas #pdfViewer></canvas>
-     
      <div id="pdf" *ngIf="pdfUrl">
       <iframe [src]="pdfUrl" width="100%" height="600px"></iframe>
     </div>

@@ -13,7 +13,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 })
 export class OficioPdfViewerComponent implements OnInit {
 
-  pdfUrl: SafeResourceUrl = '';  // Alterado para SafeResourceUrl
+  pdfUrl: string = '';  // Alterado para SafeResourceUrl
   isLoading: boolean = true;  // Flag para mostrar o status de carregamento
   numero: string = '';
   unidade: string = '';
