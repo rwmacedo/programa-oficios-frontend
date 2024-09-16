@@ -13,11 +13,12 @@
      </div>
 
      <!-- Exibir PDF -->
-    <div *ngIf="pdfUrl">
-      <!--<embed [src]="pdfUrl" type="application/pdf" width="100%" height="600px" /> -->
-      <iframe [src]="pdfUrl"  width="100%" height="600px"></iframe> />
-
+     <div *ngIf="pdfUrl">
+      <iframe [src]="pdfUrl" width="100%" height="600px"></iframe>
     </div>
-    <div *ngIf="!pdfUrl">
-      <p>Carregando PDF...</p>
+    <div *ngIf="!pdfUrl && isLoading">
+      Carregando PDF...
+    </div>
+    <div *ngIf="!pdfUrl && !isLoading">
+      PDF não encontrado ou erro ao carregar.
     </div>

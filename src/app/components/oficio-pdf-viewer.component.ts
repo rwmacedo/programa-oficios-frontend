@@ -42,14 +42,20 @@ export class OficioPdfViewerComponent implements OnInit {
   }
 
   // Função para carregar o PDF e abrir em nova aba
-  loadPdf(fileName:string): void {
-    this.fileService.getPdf(fileName).subscribe(blob => {
-      const url = URL.createObjectURL(blob);
-      console.log("chamando " + url)
-      this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  loadPdf(fileName: string): void {
+    this.isLoading = true;  // Inicia o carregamento
+    this.fileService.getPdf(fileName).subscribe({
+      next: (blob) => {
+        const url = URL.createObjectURL(blob);
+        this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+        this.isLoading = false;  // Carregamento completo
+      },
+      error: (error) => {
+        console.error('Erro ao carregar o PDF:', error);
+        this.isLoading = false;  // Finaliza o carregamento em caso de erro
+      }
     });
   }
-
   // Função para redirecionar à página inicial
   goBack() {
     this.router.navigate(['/']);
