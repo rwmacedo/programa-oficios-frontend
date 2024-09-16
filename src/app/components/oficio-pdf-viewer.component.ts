@@ -24,9 +24,15 @@ export class OficioPdfViewerComponent implements OnInit {
 
   loadPdf(fileName: string) {
     this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
-      // Ignora a verificação do tipo para teste
-      const fileURL = URL.createObjectURL(blob);
-      this.pdfUrl = fileURL;  // Defina a URL do PDF para exibição
+      console.log('Tipo de arquivo retornado:', blob.type);  // Logar o tipo de arquivo retornado
+  
+      // Verifique se o Blob é do tipo PDF
+      if (blob.type === 'application/pdf') {
+        const fileURL = URL.createObjectURL(blob);
+        this.pdfUrl = fileURL;
+      } else {
+        console.error('O arquivo retornado não é um PDF');
+      }
       this.isLoading = false;  // Quando o PDF for carregado, pare de mostrar o status de carregamento
     }, error => {
       console.error('Erro ao carregar o PDF', error);
