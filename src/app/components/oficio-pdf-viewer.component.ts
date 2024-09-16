@@ -12,9 +12,9 @@ export class OficioPdfViewerComponent implements OnInit {
 
   pdfUrl: SafeResourceUrl = '';  // Alterado para SafeResourceUrl
   isLoading: boolean = true;  // Flag para mostrar o status de carregamento
-  numero!: string;
-  unidade!: string;
-  ano!: string;
+  numero: string = '';
+  unidade: string = '';
+  ano: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -25,13 +25,14 @@ export class OficioPdfViewerComponent implements OnInit {
 
   ngOnInit(): void {
     // Captura os dados do state ao navegar
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation?.extras.state as { numero: string, unidade: string, ano: string };
+    const state = history.state as { numero: string, unidade: string, ano: string };
 
-    if (state) {
+    if (state && state.numero && state.unidade && state.ano) {
       this.numero = state.numero;
       this.unidade = state.unidade;
       this.ano = state.ano;
+    } else {
+      console.error('Nenhum dado de ofício encontrado no state.');
     }
 
     const fileName = this.route.snapshot.paramMap.get('fileName')!;  // Agora buscamos o fileName
