@@ -19,4 +19,8 @@ export class FileService {
     responseType: 'blob'  // Para garantir que a resposta seja tratada como um Blob
   });
 }
+// Método para buscar o arquivo PDF do backend pelo ID
+getPdfUrl(id: number): Observable<Blob> {
+  return this.http.get(`${this.apiUrl}/${id}/download`, { responseType: 'blob' });
+}
 }

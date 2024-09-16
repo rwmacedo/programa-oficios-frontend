@@ -13,7 +13,11 @@ export class OficioService {
   
 
   constructor(private http: HttpClient) { }
-
+  
+// Método para buscar o arquivo PDF do backend pelo ID
+  getPdfUrl(id: number): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/${id}/download`, { responseType: 'blob' });
+  }
   // Método para listar todos os ofícios
   getOficios(): Observable<Oficio[]> {
     return this.http.get<Oficio[]>(this.apiUrl);

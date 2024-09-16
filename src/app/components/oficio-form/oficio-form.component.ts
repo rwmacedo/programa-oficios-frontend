@@ -29,7 +29,7 @@ export class OficioFormComponent {
   };
 
   selectedFile: File | null = null;
-  fileError: string | null = null;  
+  fileError: string | null = null;  // <--- Adicionando variável para o erro do arquivo
   
 
   constructor(
