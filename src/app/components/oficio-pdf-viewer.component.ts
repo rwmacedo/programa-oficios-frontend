@@ -12,11 +12,9 @@ export class OficioPdfViewerComponent implements OnInit {
 
   pdfUrl: SafeResourceUrl = '';  // Alterado para SafeResourceUrl
   isLoading: boolean = true;  // Flag para mostrar o status de carregamento
-  oficio = {
-    numero: '',
-    unidade: '',
-    ano: ''
-  };
+  numero!: string;
+  unidade!: string;
+  ano!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,16 +24,21 @@ export class OficioPdfViewerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Captura os dados do state ao navegar
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras.state as { numero: string, unidade: string, ano: string };
+
+    if (state) {
+      this.numero = state.numero;
+      this.unidade = state.unidade;
+      this.ano = state.ano;
+    }
+
     const fileName = this.route.snapshot.paramMap.get('fileName')!;  // Agora buscamos o fileName
     this.loadPdf(fileName);
   }
 
-    // Função para redirecionar à página inicial
-    goBack() {
-      this.router.navigate(['/']);
-    }
-  
-
+  // Função para carregar o PDF e abrir em nova aba
   loadPdf(fileName: string) {
     this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
       console.log('Tipo de arquivo retornado:', blob.type);  // application/pdf
@@ -51,5 +54,10 @@ export class OficioPdfViewerComponent implements OnInit {
       console.error('Erro ao carregar o PDF', error);
       this.isLoading = false;  // Pare de mostrar o status de carregamento em caso de erro
     });
+  }
+
+  // Função para redirecionar à página inicial
+  goBack() {
+    this.router.navigate(['/']);
   }
 }
