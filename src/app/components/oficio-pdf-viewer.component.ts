@@ -45,6 +45,7 @@ export class OficioPdfViewerComponent implements OnInit {
   loadPdf(fileName:string): void {
     this.fileService.getPdf(fileName).subscribe(blob => {
       const url = URL.createObjectURL(blob);
+      console.log("chamando " +url)
       this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     });
   }
