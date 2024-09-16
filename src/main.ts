@@ -18,6 +18,8 @@ const routes: Routes = [
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideRouter(routes, withHashLocation()),  // Adiciona todas as rotas incluindo view-pdf/:id
+    provideHttpClient(),  // Provedor para fazer requisições HTTP
     provideRouter(
       [
         { path: '', component: OficioListComponent },
@@ -29,6 +31,7 @@ bootstrapApplication(AppComponent, {
     provideHttpClient()  // Provedor para fazer requisições HTTP
   ]
 });
+
 imports: [
   BrowserAnimationsModule,
   ToastrModule.forRoot({
