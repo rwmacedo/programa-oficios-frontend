@@ -10,14 +10,14 @@ import { environment } from '../../environments/environment';
 export class OficioService {
 
   private apiUrl = environment.apiURL + '/Oficios'; // URL da API criada no backend
-  
+  private apiUrlpdf = environment.apiURL + '/'; // URL da API criada no backend
 
   constructor(private http: HttpClient) { }
   
 // Método para buscar o arquivo PDF do backend pelo nome do arquivo
 getPdfUrl(fileName: string): Observable<Blob> {
   // Corrige a URL para o caminho correto no backend
-  return this.http.get(`${this.apiUrl}/Files/download/${fileName}`, { responseType: 'blob' });
+  return this.http.get(`${this.apiUrlpdf}/Files/download/${fileName}`, { responseType: 'blob' });
 }
 
   // Método para listar todos os ofícios
