@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OficioService } from '../services/oficio.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FileService } from '../services/file.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 
 
@@ -24,7 +25,8 @@ export class OficioPdfViewerComponent implements OnInit {
     private oficioService: OficioService,
     private sanitizer: DomSanitizer,
     private router: Router,
-    private fileService: FileService
+    private fileService: FileService,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -49,13 +51,12 @@ export class OficioPdfViewerComponent implements OnInit {
     this.fileService.getPdf(fileName).subscribe({
       next: (blob) => {
         const url = URL.createObjectURL(blob);
-        console.log("Blob recebido:", blob);
-        console.log("URL gerada:", url);
         this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
         this.isLoading = false;  // Carregamento completo
-
         console.log('pdfUrl:', this.pdfUrl);
         console.log('isLoading:', this.isLoading);
+        this.cd.detectChanges(); 
+
       },
       error: (error) => {
         console.error('Erro ao carregar o PDF:', error);
