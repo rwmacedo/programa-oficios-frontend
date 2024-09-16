@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OficioService } from '../services/oficio.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FileService } from '../services/file.service';
 import * as pdfjsLib from 'pdfjs-dist';
+
 
 @Component({
   selector: 'app-oficio-pdf-viewer',
@@ -11,11 +12,9 @@ import * as pdfjsLib from 'pdfjs-dist';
   styleUrls: ['./oficio-pdf-viewer.component.css']
 })
 export class OficioPdfViewerComponent implements OnInit {
-  
-  @ViewChild('pdfViewer', { static: true }) pdfViewer!: ElementRef; // MOVIDO para fora do ngOnInit
 
-  pdfUrl: SafeResourceUrl = '';
-  isLoading: boolean = true;
+  pdfUrl: SafeResourceUrl = '';  // Alterado para SafeResourceUrl
+  isLoading: boolean = true;  // Flag para mostrar o status de carregamento
   numero: string = '';
   unidade: string = '';
   ano: string = '';
@@ -44,29 +43,23 @@ export class OficioPdfViewerComponent implements OnInit {
     this.loadPdf(fileName);
   }
 
+  // Função para carregar o PDF e abrir em nova aba
   loadPdf(fileName: string): void {
-    this.fileService.getPdf(fileName).subscribe(blob => {
-      const url = URL.createObjectURL(blob);
-      const loadingTask = pdfjsLib.getDocument(url);
-
-      loadingTask.promise.then(pdf => {
-        pdf.getPage(1).then(page => {
-          const viewport = page.getViewport({ scale: 1.5 });
-          const canvas: HTMLCanvasElement = this.pdfViewer.nativeElement;
-          const context = canvas.getContext('2d')!;
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-
-          const renderContext = {
-            canvasContext: context,
-            viewport: viewport
-          };
-          page.render(renderContext);
-        });
-      });
+    this.isLoading = true;  // Inicia o carregamento
+    this.fileService.getPdf(fileName).subscribe({
+      next: (blob) => {
+        const url = URL.createObjectURL(blob);
+        console.log("Blob recebido:", blob);
+        console.log("URL gerada:", url);
+        this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+        this.isLoading = false;  // Carregamento completo
+      },
+      error: (error) => {
+        console.error('Erro ao carregar o PDF:', error);
+        this.isLoading = false;  // Finaliza o carregamento em caso de erro
+      }
     });
   }
-
   // Função para redirecionar à página inicial
   goBack() {
     this.router.navigate(['/']);
