@@ -11,7 +11,7 @@ import { OficioPdfViewerComponent } from './app/components/oficio-pdf-viewer.com
 
 const routes: Routes = [
   { path: '', component: OficioListComponent },
-  //{ path: 'view-pdf/:fileName', component: OficioPdfViewerComponent }
+  { path: 'view-pdf/:fileName', component: OficioPdfViewerComponent }
  
 ];
 
