@@ -23,14 +23,16 @@ export class OficioPdfViewerComponent implements OnInit {
   }
 
   loadPdf(fileName: string) {
+    console.log('Carregando o arquivo:', fileName); // Log de início
+  
     this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
       console.log('Tipo de arquivo retornado:', blob.type);
       console.log('Tamanho do Blob:', blob.size);
   
-      // Para depurar, você pode tentar ler o conteúdo do Blob como texto
       blob.text().then(content => console.log('Conteúdo retornado:', content));
   
       const fileURL = URL.createObjectURL(blob);
+      console.log('URL gerada para o PDF:', fileURL); // Exibir a URL gerada
       this.pdfUrl = fileURL;
       this.isLoading = false;
     }, error => {
@@ -38,5 +40,4 @@ export class OficioPdfViewerComponent implements OnInit {
       this.isLoading = false;
     });
   }
-  
 }
