@@ -16,6 +16,7 @@ export class OficioService {
   
 // Método para buscar o arquivo PDF do backend pelo nome do arquivo
 getPdfUrl(fileName: string): Observable<Blob> {
+  // Corrige a URL para o caminho correto no backend
   return this.http.get(`${this.apiUrl}/Files/download/${fileName}`, { responseType: 'blob' });
 }
 
