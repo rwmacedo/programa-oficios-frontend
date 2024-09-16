@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OficioService } from '../services/oficio.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FileService } from '../services/file.service';
-import * as pdfjsLib from 'pdfjs-dist';
+
 
 
 @Component({
@@ -13,7 +13,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 })
 export class OficioPdfViewerComponent implements OnInit {
 
-  pdfUrl: string = '';  // Alterado para SafeResourceUrl
+  pdfUrl: SafeResourceUrl = '';  // Alterado para SafeResourceUrl
   isLoading: boolean = true;  // Flag para mostrar o status de carregamento
   numero: string = '';
   unidade: string = '';
@@ -51,7 +51,7 @@ export class OficioPdfViewerComponent implements OnInit {
         const url = URL.createObjectURL(blob);
         console.log("Blob recebido:", blob);
         console.log("URL gerada:", url);
-        this.pdfUrl = url;
+        this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
         this.isLoading = false;  // Carregamento completo
 
         console.log('pdfUrl:', this.pdfUrl);
