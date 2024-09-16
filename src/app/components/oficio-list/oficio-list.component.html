@@ -59,7 +59,7 @@
                 <span *ngIf="!row">Sem dados</span> <!-- Verificação de dados -->
             
                 <!-- Ícone de Visualizar PDF (Novo ícone) -->
-                <a *ngIf="row.arquivoUrl" [routerLink]="['/view-pdf', row.id]" class="text-secondary me-2">
+                <a *ngIf="row.arquivoUrl" [routerLink]="['/view-pdf', getFileNameFromUrl(row.arquivoUrl)]" class="text-secondary me-2">
                  <i class="bi bi-search" style="font-size: 1.5rem;"></i>
                </a>
 

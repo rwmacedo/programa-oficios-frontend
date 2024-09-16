@@ -160,8 +160,7 @@ filterOficios() {
       console.error('Erro ao fazer o download do arquivo', error);
     }
   }
-
   getFileNameFromUrl(url: string): string {
-    return url.substring(url.lastIndexOf('/') + 1);  // Extrai o nome do arquivo da URL completa
+    return url.substring(url.lastIndexOf('/') + 1);  // Extrai o nome do arquivo da URL
   }
-}
+  }

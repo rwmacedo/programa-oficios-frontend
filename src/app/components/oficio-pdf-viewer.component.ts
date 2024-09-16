@@ -10,6 +10,7 @@ import { OficioService } from '../services/oficio.service';
 export class OficioPdfViewerComponent implements OnInit {
 
   pdfUrl: string = '';
+  isLoading: boolean = true;  // Flag para mostrar o status de carregamento
 
   constructor(
     private route: ActivatedRoute,
@@ -17,16 +18,23 @@ export class OficioPdfViewerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const oficioId = +this.route.snapshot.paramMap.get('id')!;
-    this.loadPdf(oficioId);
+    const fileName = this.route.snapshot.paramMap.get('fileName')!;  // Agora buscamos o fileName
+    this.loadPdf(fileName);
   }
 
-  loadPdf(oficioId: number) {
-    this.oficioService.getPdfUrl(oficioId).subscribe((blob: Blob) => {
-      const fileURL = URL.createObjectURL(blob);
-      this.pdfUrl = fileURL;
+  loadPdf(fileName: string) {
+    this.oficioService.getPdfUrl(fileName).subscribe((blob: Blob) => {
+      // Verifique se o Blob é do tipo PDF
+      if (blob.type === 'application/pdf') {
+        const fileURL = URL.createObjectURL(blob);
+        this.pdfUrl = fileURL;
+      } else {
+        console.error('O arquivo retornado não é um PDF');
+      }
+      this.isLoading = false;  // Quando o PDF for carregado, pare de mostrar o status de carregamento
     }, error => {
       console.error('Erro ao carregar o PDF', error);
+      this.isLoading = false;  // Pare de mostrar o status de carregamento em caso de erro
     });
   }
 }
