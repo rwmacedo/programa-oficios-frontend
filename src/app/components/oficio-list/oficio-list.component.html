@@ -61,23 +61,23 @@
                 <!-- Ícone de Visualizar PDF (Novo ícone) -->
                 <a *ngIf="row.arquivoUrl" [routerLink]="['/view-pdf', getFileNameFromUrl(row.arquivoUrl)]" 
                 [state]="{ numero: row.numero, unidade: row.unidade, ano: row.ano }" class="text-secondary me-2">
-                <i class="bi bi-search" style="font-size: 1.5rem;"></i>
+                <i class="bi bi-search" style="font-size: 1rem;"></i>
                 </a>
 
                 <!-- Ícone de Editar (Bootstrap) -->
                 <a [routerLink]="['/edit', row.id]" class="text-secondary me-2"> <!-- Corrigido para "text-secondary" -->
-                  <i class="bi bi-pencil" style="font-size: 1.5rem;"></i>
+                  <i class="bi bi-pencil" style="font-size: 1rem;"></i>
                 </a>
             
                 <!-- Ícone de Excluir (Bootstrap) -->
                 <a href="#" class="text-secondary me-2" (click)="deleteOficio(row.id)"> <!-- Corrigido para "text-secondary" -->
-                  <i class="bi bi-trash" style="font-size: 1.5rem;"></i>
+                  <i class="bi bi-trash" style="font-size: 1rem;"></i>
                 </a>
                  
             
                 <!-- Ícone de Download (Bootstrap Icons) -->
                 <a *ngIf="row.arquivoUrl" href="#" class="text-secondary" (click)="downloadFile(getFileNameFromUrl(row.arquivoUrl))"> <!-- Corrigido para "text-secondary" -->
-                  <i class="bi bi-download" style="font-size: 1.5rem;"></i>
+                  <i class="bi bi-download" style="font-size: 1rem;"></i>
                 </a>
               </ng-template>
             </ngx-datatable-column>          
